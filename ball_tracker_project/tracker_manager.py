@@ -1,10 +1,10 @@
 # tracker_manager.py
 import cv2
 import numpy as np
-import config # Importa as configurações
+from .config import Config # Importa as configurações
 
 class TrackerManager:
-    def __init__(self, tracker_type=config.TRACKER_TYPE):
+    def __init__(self, tracker_type=Config.TRACKER_TYPE):
         self.trackers = []
         self.tracker_type = tracker_type
         self._tracker_creation_func = self._get_tracker_creation_func(tracker_type)

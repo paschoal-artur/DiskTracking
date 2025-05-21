@@ -1,7 +1,7 @@
 # ball_detector.py
 import cv2
 import numpy as np
-import config # Importa as configurações
+from .config import Config # Importa as configurações
 
 def detect_balls_hough(frame, roi_polygon_points, roi_mask, next_ball_id_start=0):
     """
@@ -14,17 +14,17 @@ def detect_balls_hough(frame, roi_polygon_points, roi_mask, next_ball_id_start=0
 
     frame_in_roi = cv2.bitwise_and(frame, frame, mask=roi_mask)
     gray = cv2.cvtColor(frame_in_roi, cv2.COLOR_BGR2GRAY)
-    blurred = cv2.GaussianBlur(gray, config.HOUGH_GRAY_BLUR_KERNEL, config.HOUGH_GRAY_BLUR_SIGMA_X)
+    blurred = cv2.GaussianBlur(gray, Config.HOUGH_GRAY_BLUR_KERNEL, Config.HOUGH_GRAY_BLUR_SIGMA_X)
 
     circles = cv2.HoughCircles(
         blurred,
         cv2.HOUGH_GRADIENT,
-        dp=config.HOUGH_DP,
-        minDist=config.HOUGH_MIN_DIST,
-        param1=config.HOUGH_PARAM1,
-        param2=config.HOUGH_PARAM2,
-        minRadius=config.HOUGH_MIN_RADIUS,
-        maxRadius=config.HOUGH_MAX_RADIUS
+        dp=Config.HOUGH_DP,
+        minDist=Config.HOUGH_MIN_DIST,
+        param1=Config.HOUGH_PARAM1,
+        param2=Config.HOUGH_PARAM2,
+        minRadius=Config.HOUGH_MIN_RADIUS,
+        maxRadius=Config.HOUGH_MAX_RADIUS
     )
 
     detected_balls_info = []

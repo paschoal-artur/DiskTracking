@@ -3,8 +3,9 @@ import cv2
 import numpy as np
 import json
 import os
-from config import * # Importa as configurações
-Config = config() # Alias para facilitar a leitura
+from .config import Config # Importa as configurações
+
+
 class ROIHandler:
     def __init__(self, frame_for_selection, config_file=Config.ROI_CONFIG_FILE):
         self.points = []

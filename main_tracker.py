@@ -2,11 +2,12 @@
 import cv2
 import time
 import numpy as np # Necessário para np.array em algumas chamadas de visualização
-from ball_tracker_project.config import *
-from ball_tracker_project.roi_handler import ROIHandler
-from ball_tracker_project.ball_detector import detect_balls_hough
-from ball_tracker_project.tracker_manager import TrackerManager
-import ball_tracker_project.visualization_utils as viz
+from ball_tracker_project.config import Config
+from ball_tracker_project.config import Config
+from ball_tracker_project.roi_handler import ROIHandler 
+from ball_tracker_project.ball_detector import detect_balls_hough 
+from ball_tracker_project.tracker_manager import TrackerManager 
+import ball_tracker_project.visualization_utils as viz 
 
 def preprocess_frame(frame):
     """Aplica pré-processamentos consistentes ao frame (ex: rotação)."""
